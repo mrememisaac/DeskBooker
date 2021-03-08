@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeskBooker.Entities", "Desk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskBooker.Core.Tests", "DeskBooker.Core.Tests\DeskBooker.Core.Tests.csproj", "{4DAA3995-8853-4023-8228-65B3BFC805F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskBooker.Core", "DeskBooker.Core\DeskBooker.Core.csproj", "{A71009EB-3EEE-42E1-9F0B-71B769B2349E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4DAA3995-8853-4023-8228-65B3BFC805F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DAA3995-8853-4023-8228-65B3BFC805F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DAA3995-8853-4023-8228-65B3BFC805F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A71009EB-3EEE-42E1-9F0B-71B769B2349E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A71009EB-3EEE-42E1-9F0B-71B769B2349E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A71009EB-3EEE-42E1-9F0B-71B769B2349E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A71009EB-3EEE-42E1-9F0B-71B769B2349E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
