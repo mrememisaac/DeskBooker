@@ -24,5 +24,12 @@ namespace DeskBooker.Core.Tests
             Assert.Equal(request.LastName, result.LastName);
         }
 
+        [Fact]
+        public void ThrowsArgumentNullExceptionIfRequestIsNull()
+        {
+            var processor = new DeskBookerProcessor();
+            var exception = Assert.Throws<ArgumentNullException>(() => processor.BookDesk(null));
+            Assert.Equal("request", exception.ParamName);
+        }
     }
 }
