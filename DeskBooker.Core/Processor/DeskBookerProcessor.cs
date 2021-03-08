@@ -11,6 +11,7 @@ namespace DeskBooker.Core
 
         public DeskBookerRequestResult BookDesk(DeskBookerRequest request)
         {
+            if (request == null) throw new ArgumentNullException(nameof(request));
             return new DeskBookerRequestResult()
             {
                 Email = request.Email,
