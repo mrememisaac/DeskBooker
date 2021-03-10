@@ -6,17 +6,24 @@ namespace DeskBooker.Core.Tests
 {
     public class DeskBookerProcessorTests
     {
-        [Fact]
-        public void ReturnsDeskBookerRequestResult()
+        private readonly DeskBookerProcessor processor;
+        private readonly DeskBookerRequest request;
+
+        public DeskBookerProcessorTests()
         {
-            var processor = new DeskBookerProcessor();
-            var request = new DeskBookerRequest()
+            processor = new DeskBookerProcessor();
+            request = new DeskBookerRequest()
             {
                 FirstName = "Emem",
                 LastName = "Isaac",
                 Email = "emem-isaac@someniceplace.com",
                 Date = new DateTime(2021, 03, 08)
             };
+        }
+
+        [Fact]
+        public void ReturnsDeskBookerRequestResult()
+        {
             DeskBookerRequestResult result = processor.BookDesk(request);
             Assert.Equal(request.Date, result.Date);
             Assert.Equal(request.Email, result.Email);
@@ -27,9 +34,9 @@ namespace DeskBooker.Core.Tests
         [Fact]
         public void ThrowsArgumentNullExceptionIfRequestIsNull()
         {
-            var processor = new DeskBookerProcessor();
             var exception = Assert.Throws<ArgumentNullException>(() => processor.BookDesk(null));
             Assert.Equal("request", exception.ParamName);
         }
+        
     }
 }
