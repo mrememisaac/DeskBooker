@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace DeskBooker.Data
 {
     public interface IDeskRepository
     {
-        IQueryable<Desk> GetAvailableDesks(DateTime date);
+        public IEnumerable<Desk> GetAvailableDesks(DateTime date);
     }
 }
