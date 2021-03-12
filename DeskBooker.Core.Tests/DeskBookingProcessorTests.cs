@@ -77,5 +77,15 @@ namespace DeskBooker.Core.Tests
             processor.BookDesk(request);
             mockDeskBookingRepository.Verify(x => x.Save(It.IsAny<DeskBooking>()), Times.Never);
         }
+
+        [Theory]
+        [InlineData(DeskBookingResultCode.Success, true)]
+        [InlineData(DeskBookingResultCode.NoDeskAvailable, false)]
+        public void ShouldReturnExpectedResultCode(DeskBookingResultCode expectedCode, bool deskAvailable)
+        {
+            if (!deskAvailable) availableDesks.Clear();
+            var result = processor.BookDesk(request);
+            Assert.Equal(result.ResultCode, expectedCode);
+        }
     }
 }
