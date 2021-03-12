@@ -23,9 +23,11 @@ namespace DeskBooker.Core
         public BookDeskRequestResult BookDesk(BookDeskRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-            if(deskRepository.GetAvailableDesks(request.Date).Count() > 0)
+            if (deskRepository.GetAvailableDesks(request.Date).FirstOrDefault() is Desk desk)
             {
-                deskBookingRepository.Save(Create<DeskBooking>(request));
+                var booking = Create<DeskBooking>(request);
+                booking.DeskId = desk.Id;
+                deskBookingRepository.Save(booking);
             }
             return Create<BookDeskRequestResult>(request);
         }
@@ -37,7 +39,7 @@ namespace DeskBooker.Core
                 Date = request.Date,
                 Email = request.Email,
                 FirstName = request.FirstName,
-                LastName = request.LastName
+                LastName = request.LastName                
             };
         }
     }
