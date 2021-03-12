@@ -23,13 +23,17 @@ namespace DeskBooker.Core
         public BookDeskRequestResult BookDesk(BookDeskRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
+            var resultCode = DeskBookingResultCode.NoDeskAvailable;
             if (deskRepository.GetAvailableDesks(request.Date).FirstOrDefault() is Desk desk)
             {
                 var booking = Create<DeskBooking>(request);
                 booking.DeskId = desk.Id;
                 deskBookingRepository.Save(booking);
+                resultCode = DeskBookingResultCode.Success;
             }
-            return Create<BookDeskRequestResult>(request);
+            var result = Create<BookDeskRequestResult>(request);
+            result.ResultCode = resultCode;
+            return result;
         }
 
         private static T Create<T>(BookDeskRequest request) where T : DeskBookingBase, new()
